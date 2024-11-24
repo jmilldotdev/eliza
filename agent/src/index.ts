@@ -21,10 +21,12 @@ import {
     settings,
     IDatabaseAdapter,
     validateCharacterConfig,
+    CharacterConfig,
 } from "@ai16z/eliza";
 import { bootstrapPlugin } from "@ai16z/plugin-bootstrap";
 import { solanaPlugin } from "@ai16z/plugin-solana";
 import { nodePlugin } from "@ai16z/plugin-node";
+import { glifPlugin } from "@ai16z/plugin-glif";
 import { coinbaseCommercePlugin } from "@ai16z/plugin-coinbase";
 import Database from "better-sqlite3";
 import fs from "fs";
@@ -81,7 +83,9 @@ export async function loadCharacters(
     if (characterPaths?.length > 0) {
         for (const path of characterPaths) {
             try {
-                const character = JSON.parse(fs.readFileSync(path, "utf8"));
+                const character: CharacterConfig = JSON.parse(
+                    fs.readFileSync(path, "utf8")
+                );
 
                 validateCharacterConfig(character);
 
@@ -93,7 +97,7 @@ export async function loadCharacters(
                         character.plugins.map(async (plugin) => {
                             // if the plugin name doesnt start with @eliza,
 
-                            const importedPlugin = await import(plugin);
+                            const importedPlugin = await import(plugin.name);
                             return importedPlugin;
                         })
                     );
@@ -249,6 +253,7 @@ export function createAgent(
         plugins: [
             bootstrapPlugin,
             nodePlugin,
+            glifPlugin,
             character.settings.secrets?.WALLET_PUBLIC_KEY ? solanaPlugin : null,
             character.settings.secrets?.COINBASE_COMMERCE_KEY ||
             process.env.COINBASE_COMMERCE_KEY
@@ -275,7 +280,7 @@ function intializeDbCache(character: Character, db: IDatabaseCacheAdapter) {
     return cache;
 }
 
-async function startAgent(character: Character, directClient: DirectClient) {
+async function startAgent(character: Character, directClient: any) {
     try {
         character.id ??= stringToUuid(character.name);
         character.username ??= character.name;
@@ -325,7 +330,7 @@ const startAgents = async () => {
 
     try {
         for (const character of characters) {
-            await startAgent(character, directClient as DirectClient);
+            await startAgent(character, directClient);
         }
     } catch (error) {
         elizaLogger.error("Error starting agents:", error);
