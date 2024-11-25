@@ -998,8 +998,8 @@ importers:
         specifier: 1.6.0
         version: 1.6.0
       echogarden:
-        specifier: ^2.0.5
-        version: 2.0.6(bufferutil@4.0.8)(canvas@2.11.2(encoding@0.1.13))(encoding@0.1.13)(utf-8-validate@5.0.10)(zod@3.23.8)
+        specifier: ^2.0.7
+        version: 2.0.7(bufferutil@4.0.8)(canvas@2.11.2(encoding@0.1.13))(encoding@0.1.13)(utf-8-validate@5.0.10)(zod@3.23.8)
       espeak-ng:
         specifier: 1.0.2
         version: 1.0.2
@@ -7993,8 +7993,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  echogarden@2.0.6:
-    resolution: {integrity: sha512-mpSC03TiMsQEX2jg9+/7YHBDhc+bITemHiUI/MmW3T0GQOE5hqXFc0vBQJ/9Fei7skei4hQVgGpvpxGMQLoEEw==}
+  echogarden@2.0.7:
+    resolution: {integrity: sha512-/yggoJ2NEy5VZPcAtk4DoGNGgHIRicSS0uKfk06gT+GmRPJ28kKD3MgyjK3agtQ8yIc46si09nB+hWPYiruzXw==}
     engines: {node: '>=18'}
     os: [win32, darwin, linux]
     hasBin: true
@@ -23780,7 +23780,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  echogarden@2.0.6(bufferutil@4.0.8)(canvas@2.11.2(encoding@0.1.13))(encoding@0.1.13)(utf-8-validate@5.0.10)(zod@3.23.8):
+  echogarden@2.0.7(bufferutil@4.0.8)(canvas@2.11.2(encoding@0.1.13))(encoding@0.1.13)(utf-8-validate@5.0.10)(zod@3.23.8):
     dependencies:
       '@aws-sdk/client-polly': 3.699.0
       '@aws-sdk/client-transcribe-streaming': 3.699.0
@@ -28155,7 +28155,7 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       is-interactive: 1.0.0
